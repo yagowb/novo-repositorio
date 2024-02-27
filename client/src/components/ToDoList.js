@@ -10,6 +10,8 @@ function ToDoList() {
   const [todos, setTodos] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [newTodo, setNewTodo] = useState({ titulo: '', descricao: '', data: '', hora: '' });
+  const [editingTodo, setEditingTodo] = useState(null);
+
 
   axios.defaults.headers.common = {
     'X-Requested-With': 'XMLHttpRequest',
@@ -48,8 +50,123 @@ function ToDoList() {
   };
 
   const handleEdit = (todo) => {
-    // Implemente a lógica para editar o ToDo
+    setEditingTodo(todo);
   };
+
+  const handleCancelEdit = () => {
+    setEditingTodo(null);
+  };
+
+
+  const handleUpdate = async () => {
+    try {
+      const response = await axios.put(`http://localhost:8000/api/todos/${editingTodo.id}`, {
+        titulo: editingTodo.titulo,
+        descricao: editingTodo.descricao,
+        data: editingTodo.data,
+        hora: editingTodo.hora
+      });
+      console.log(response);
+
+      const updatedTodos = todos.map((todo) => {
+        if (todo.id === editingTodo.id) {
+          return response.data;
+        }
+        return todo;
+      });
+      setTodos(updatedTodos);
+
+      setEditingTodo(null);
+    } catch (error) {
+      console.error('Error updating todo:', error);
+    }
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setEditingTodo({
+      ...editingTodo,
+      [name]: value
+    });
+  };
+
+  const renderEditForm = () => {
+    if (!editingTodo) {
+      return null;
+    }
+
+    return (
+      <Form>
+        <Form.Group controlId="formTitulo">
+          <Form.Label>Título</Form.Label>
+          <Form.Control
+            type="text"
+            name="titulo"
+            value={editingTodo.titulo}
+            onChange={handleInputChange}
+          />
+        </Form.Group>
+        <Form.Group controlId="formDescricao">
+          <Form.Label>Descrição</Form.Label>
+          <Form.Control
+            type="text"
+            name="descricao"
+            value={editingTodo.descricao}
+            onChange={handleInputChange}
+          />
+        </Form.Group>
+        <Form.Group controlId="formData">
+          <Form.Label>Data</Form.Label>
+          <Form.Control
+            type="date"
+            name="data"
+            value={editingTodo.data}
+            onChange={handleInputChange}
+          />
+        </Form.Group>
+        <Form.Group controlId="formHora">
+          <Form.Label>Hora</Form.Label>
+          <Form.Control
+            type="time"
+            name="hora"
+            value={editingTodo.hora}
+            onChange={handleInputChange}
+          />
+        </Form.Group>
+        <Button variant="secondary" onClick={handleCancelEdit}>
+          Cancelar
+        </Button>
+        <Button variant="primary" onClick={handleUpdate}>
+          Atualizar
+        </Button>
+      </Form>
+    );
+  };
+
+
+  const renderTodos = () => {
+    return todos.map((todo) => (
+      <div key={todo.id} className="col-md-4 mb-4">
+        <Card>
+          <Card.Body>
+            <Card.Title>{todo.titulo}</Card.Title>
+            <Card.Text>{todo.descricao}</Card.Text>
+            <Card.Text>{todo.data} - {todo.hora}</Card.Text>
+          </Card.Body>
+          <Card.Footer>
+            <Button id='editbutton' variant="warning" onClick={() => handleEdit(todo)}>
+              <FaEdit />
+            </Button>
+            <Button id='deletebutton' variant="danger" onClick={() => handleDelete(todo.id)}>
+              <FaTrash />
+            </Button>
+          </Card.Footer>
+        </Card>
+      </div>
+    ));
+  };
+
+
 
   const handleDelete = async (id) => {
     try {
@@ -109,18 +226,20 @@ function ToDoList() {
               </Card.Body>
               <Card.Footer>
                 <Button id='editbutton' variant="warning" onClick={() => handleEdit(todo)}>
-                    <FaEdit />
+                  <FaEdit />
                 </Button>
                 <Button id='deletebutton' variant="danger" onClick={() => handleDelete(todo.id)}>
-                    <FaTrash />
+                  <FaTrash />
                 </Button>
-            </Card.Footer>
+              </Card.Footer>
             </Card>
           </div>
         ))}
       </div>
+      {renderEditForm()}
     </div>
   );
+
 }
 
 export default ToDoList;
