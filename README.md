@@ -1,10 +1,8 @@
-# Projeto: ToDoList
+# To Do List - Gerenciador de Tarefas
 
-## Sobre
+Este projeto é uma aplicação web para gerenciamento de tarefas (ToDo List). Ele permite que os usuários criem, visualizem, editem e excluam tarefas.  
 
-Este projeto é uma aplicação web para gerenciamento de tarefas (ToDo List). Ele permite que os usuários criem, visualizem, editem e excluam tarefas.
-
-## Tecnologias Utilizadas
+### Tecnologias Utilizadas
 
 - Laravel (Framework PHP)
 - React (Framework JavaScript)
@@ -12,7 +10,9 @@ Este projeto é uma aplicação web para gerenciamento de tarefas (ToDo List). E
 - Supabase (Banco de Dados Relacional)
 
 
-## Funcionalidades
+
+
+### Funcionalidades
 
 1. **Visualizar todas as ToDo's**: O usuários podem consultar as tarefas disponíveis.
 
@@ -22,40 +22,45 @@ Este projeto é uma aplicação web para gerenciamento de tarefas (ToDo List). E
 
 4. **Deletar uma ToDo**: O usuário pode deletar uma ToDo.
 
-#
 
-## Estrutura do Projeto
 
-O projeto é estruturado da seguinte forma:
+
+
+### Estrutura do Projeto
 
 - `app/`: Contém os arquivos de back-end (PHP/Laravel).
 - `client/`: arquivos de front-end (React).
 - `routes/`: Contém os arquivos de rotas do Laravel.
 - `database/`: Contém os arquivos de migração e sementes do Laravel.
 
+
 ---
 
-## Instalação
+
+### Instalação
 
 1. Clone o repositório do projeto:
 
    ```bash
    git clone https://github.com/yagowb/todo-list-project.git
+
+2. Instale as dependências 
+
+   ```bash
+   cd todo-list/
+   composer install
    
-2. Inicialize o servidor    
+3. Inicialize o servidor em um terminal   
 
    ```bash
    php artisan serve
-
-3. Inicialize o front-end    
+4. Inicialize o client em outro terminal
 
    ```bash
    cd todo-list/client/
    npm start
    
-4. Acesse a aplicação no navegador
+5. Acesse a aplicação no navegador
 
   ```bash
   http://localhost:3000
-
-
