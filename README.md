@@ -8,6 +8,7 @@ Este projeto é uma aplicação web para gerenciamento de tarefas (ToDo List). E
 
 - Laravel (Framework PHP)
 - React (Framework JavaScript)
+- HTML / CSS (Bootstrap)
 - Supabase (Banco de Dados Relacional)
 
 
