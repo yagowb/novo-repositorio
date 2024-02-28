@@ -17,3 +17,13 @@ body {
 #deletebutton {
     margin-left: 10px;
   }
+
+#addbutton {
+    justify-content: center;
+    margin-left: 30%;
+    margin-bottom: 10%;
+}
+
+.btn-lg.round {
+	border-radius: 24px;
+}

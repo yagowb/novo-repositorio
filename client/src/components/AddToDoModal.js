@@ -24,25 +24,42 @@ function AddToDoModal({ show, onClose }) {
   return (
     <Modal show={show} onHide={onClose}>
       <Modal.Header closeButton>
-        <Modal.Title>Adicionar Todo</Modal.Title>
+        <Modal.Title>Adicionar Tarefa</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Form>
           <Form.Group controlId="formTitulo">
             <Form.Label>Título</Form.Label>
-            <Form.Control type="text" placeholder="Título" value={newTodo.titulo} onChange={handleInputChange} />
+            <Form.Control
+            type="text"
+            placeholder="Passear, estudar, treinar, etc..."
+            value={newTodo.titulo} onChange={handleInputChange}
+            />
           </Form.Group>
+          <br></br>
           <Form.Group controlId="formDescricao">
             <Form.Label>Descrição</Form.Label>
-            <Form.Control type="text" placeholder="Descrição" value={newTodo.descricao} onChange={handleInputChange} />
+            <Form.Control
+            type="text"
+            placeholder="Descrição da atividade"
+            value={newTodo.descricao} onChange={handleInputChange}
+            />
           </Form.Group>
+          <br></br>
           <Form.Group controlId="formData">
             <Form.Label>Data</Form.Label>
-            <Form.Control type="date" value={newTodo.data} onChange={handleInputChange} />
+            <Form.Control
+            type="date"
+            value={newTodo.data} onChange={handleInputChange}
+            />
           </Form.Group>
+          <br></br>
           <Form.Group controlId="formHora">
             <Form.Label>Hora</Form.Label>
-            <Form.Control type="time" value={newTodo.hora} onChange={handleInputChange} />
+            <Form.Control
+            type="time"
+            value={newTodo.hora} onChange={handleInputChange}
+            />
           </Form.Group>
         </Form>
       </Modal.Body>

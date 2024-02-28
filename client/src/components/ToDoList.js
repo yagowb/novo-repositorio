@@ -65,19 +65,21 @@ function ToDoList() {
   return (
     <div>
       <br></br><br></br>
-      <h1>ToDo List</h1>
       <br></br><br></br>
-      <Button variant="primary" onClick={() => setShowAddModal(true)}>Adicionar Todo</Button>
+      <Button
+      id="addbutton"
+      class="btn btn-primary btn-lg round"
+      onClick={() => setShowAddModal(true)}>Adicionar uma Tarefa</Button>
       <AddToDoModal show={showAddModal} onClose={() => setShowAddModal(false)} />
       <br></br><br></br>
       <div className="row">
         {todos.map((todo) => (
           <div key={todo.id} className="col-md-4 mb-4">
-            <Card>
+            <Card id="card">
               <Card.Body>
-                <Card.Title>{todo.titulo}</Card.Title>
-                <Card.Text>{todo.descricao}</Card.Text>
-                <Card.Text>{todo.data} - {todo.hora}</Card.Text>
+                <Card.Title id="titulo">{todo.titulo}</Card.Title>
+                <Card.Text id="descricao">{todo.descricao}</Card.Text>
+                <Card.Text id="datahora">{todo.data} - {todo.hora}</Card.Text>
               </Card.Body>
               <Card.Footer>
                 <Button id='editbutton' variant="warning" onClick={() => handleEdit(todo)}>

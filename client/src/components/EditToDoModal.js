@@ -19,7 +19,7 @@ function EditToDoModal({ todo, onUpdate, onCancel }) {
   return (
     <Modal show={true} onHide={onCancel}>
       <Modal.Header closeButton>
-        <Modal.Title>Editar ToDo</Modal.Title>
+        <Modal.Title>Editar Tarefa</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Form>
@@ -31,6 +31,7 @@ function EditToDoModal({ todo, onUpdate, onCancel }) {
               value={updatedTodo.titulo}
               onChange={handleInputChange}
             />
+            <br></br>
           </Form.Group>
           <Form.Group controlId="formDescricao">
             <Form.Label>Descrição</Form.Label>
@@ -40,6 +41,7 @@ function EditToDoModal({ todo, onUpdate, onCancel }) {
               value={updatedTodo.descricao}
               onChange={handleInputChange}
             />
+            <br></br>
           </Form.Group>
           <Form.Group controlId="formData">
             <Form.Label>Data</Form.Label>
@@ -49,6 +51,7 @@ function EditToDoModal({ todo, onUpdate, onCancel }) {
               value={updatedTodo.data}
               onChange={handleInputChange}
             />
+            <br></br>
           </Form.Group>
           <Form.Group controlId="formHora">
             <Form.Label>Hora</Form.Label>
@@ -66,7 +69,7 @@ function EditToDoModal({ todo, onUpdate, onCancel }) {
           Cancelar
         </Button>
         <Button variant="primary" onClick={handleSubmit}>
-          Atualizar
+          Salvar
         </Button>
       </Modal.Footer>
     </Modal>
