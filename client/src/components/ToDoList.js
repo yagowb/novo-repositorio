@@ -68,7 +68,7 @@ function ToDoList() {
       <br></br><br></br>
       <Button
       id="addbutton"
-      class="btn btn-primary btn-lg round"
+      className="btn btn-primary btn-lg round"
       onClick={() => setShowAddModal(true)}>Adicionar uma Tarefa</Button>
       <AddToDoModal show={showAddModal} onClose={() => setShowAddModal(false)} />
       <br></br><br></br>
