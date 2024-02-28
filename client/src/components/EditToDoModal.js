@@ -19,7 +19,7 @@ function EditToDoModal({ todo, onUpdate, onCancel }) {
   return (
     <Modal show={true} onHide={onCancel}>
       <Modal.Header closeButton>
-        <Modal.Title>Editar ToDo</Modal.Title>
+        <Modal.Title>Editar Tarefa</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Form>
@@ -69,7 +69,7 @@ function EditToDoModal({ todo, onUpdate, onCancel }) {
           Cancelar
         </Button>
         <Button variant="primary" onClick={handleSubmit}>
-          Atualizar
+          Salvar
         </Button>
       </Modal.Footer>
     </Modal>
