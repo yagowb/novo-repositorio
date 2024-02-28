@@ -32,6 +32,7 @@ function EditToDoModal({ todo, onUpdate, onCancel }) {
               onChange={handleInputChange}
             />
           </Form.Group>
+          <br></br>
           <Form.Group controlId="formDescricao">
             <Form.Label>Descrição</Form.Label>
             <Form.Control
@@ -41,6 +42,7 @@ function EditToDoModal({ todo, onUpdate, onCancel }) {
               onChange={handleInputChange}
             />
           </Form.Group>
+          <br></br>
           <Form.Group controlId="formData">
             <Form.Label>Data</Form.Label>
             <Form.Control
@@ -50,6 +52,7 @@ function EditToDoModal({ todo, onUpdate, onCancel }) {
               onChange={handleInputChange}
             />
           </Form.Group>
+          <br></br>
           <Form.Group controlId="formHora">
             <Form.Label>Hora</Form.Label>
             <Form.Control
