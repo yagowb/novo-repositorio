@@ -21,8 +21,7 @@ class TodoController extends Controller
 
     public function show($id)
     {
-        $todo = Todo::findOrFail($id);
-        return response()->json($todo, 200);
+        return Todo::findOrFail($id);
     }
 
     public function update(Request $request, $id)

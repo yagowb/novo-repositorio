@@ -6,33 +6,47 @@ axios.defaults.headers.common = {
 };
 
 export const fetchTodos = async () => {
-  try {
-    const response = await axios.get('http://localhost:8000/api/todos');
-    return response.data;
-  } catch (error) {
-    console.error('Erro recebendo todos:', error);
-    return [];
-  }
+    try {
+        const { data } = await axios.get('http://localhost:8000/api/todos');
+        return data;
+    } catch (error) {
+        console.error('Error fetching todos:', error);
+        return [];
+    }
 };
 
 export const addTodo = async (newTodo) => {
-  try {
-    const response = await axios.post('http://localhost:8000/api/todos', newTodo);
-    return response.data;
-  } catch (error) {
-    console.error('Erro adicionando todo:', error);
-    return null;
-  }
+    const response = await fetch('http://localhost:8000/api/todos', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newTodo),
+    });
+
+    if (!response.ok) {
+        console.error('Erro adicionando todo:', response.statusText);
+        return null;
+    }
+
+    return await response.json();
 };
 
 export const updateTodo = async (updatedTodo) => {
-  try {
-    const response = await axios.put(`http://localhost:8000/api/todos/${updatedTodo.id}`, updatedTodo);
-    return response.data;
-  } catch (error) {
-    console.error('Erro atualizando todo:', error);
-    return null;
-  }
+    const response = await fetch(`http://localhost:8000/api/todos/${updatedTodo.id}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(updatedTodo),
+    });
+
+    if (response.ok) {
+        return await response.json();
+    } else {
+        console.error('Erro atualizando todo:', response.status);
+        return null;
+    }
 };
 
 export const deleteTodo = async (id) => {
